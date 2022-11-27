@@ -13,15 +13,17 @@ const schema = require("../schemas/user");
 const validate = require("../middlewares/validator");
 const passport = require("../config/passport");
 const mustSignin = require("../middlewares/mustSignin");
+const schemasignin = require("../schemas/signin");
 
-//primero valido con joi
-//luego verifico si la cuenta existe
-//y si todo va bien creo el usuario
-router.post("/sing-up", validate(schema), accountExistsSignUp, registrar);
-//envio el codigo de verificacion por params
-//metodo verificar, cambiar la propiedad verificado de false a true
+router.post("/", validate(schema), accountExistsSignUp, registrar);
 router.get("/verify/:code", verify);
-router.post("/sign-in", accountExistsSignIn, accountHasBeenVerified, signin);
+router.post(
+  "/signin",
+  validate(schemasignin),
+  accountExistsSignIn,
+  accountHasBeenVerified,
+  signin
+);
 router.post(
   "/token",
   passport.authenticate("jwt", { session: false }),
@@ -29,7 +31,7 @@ router.post(
   loginWithToken
 );
 router.put(
-  "/sign-out",
+  "/signout",
   passport.authenticate("jwt", { session: false }),
   unlogin
 );

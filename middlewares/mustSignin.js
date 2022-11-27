@@ -1,4 +1,4 @@
-const mustSignInResponse = require("../middlewares/responses");
+const mustSignInResponse = require("../config/responses");
 
 function mustSignin(req, res, next) {
   if (req.user) {
