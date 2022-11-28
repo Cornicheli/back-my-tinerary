@@ -101,7 +101,7 @@ const controlador = {
             name: user.name,
             photo: user.photo,
             role: user.role,
-            logged: true,
+            logged: user.logged,
           },
         },
         success: true,
@@ -121,6 +121,7 @@ const controlador = {
       next(error);
     }
   },
+
 };
 
 module.exports = controlador;

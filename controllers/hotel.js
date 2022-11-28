@@ -41,9 +41,10 @@ try{
 destroy: async (req, res) =>{
     let {id}= req.params
     try{
-        let delate_hotel= await Hotel.findOneAndDelete({_id:id})
-    if(delate_hotel){
+        let deleteHotel= await Hotel.findOneAndDelete({_id:id})
+    if(deleteHotel){
         res.status(200).json({
+        id : deleteHotel._id,
         success: true,
         message:"The Hotel was successfully removed"
         })
