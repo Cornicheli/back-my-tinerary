@@ -5,6 +5,8 @@ const {
   verify,
   loginWithToken,
   unlogin,
+  readUserData,
+  updateUserData,
 } = require("../controllers/auth");
 const accountExistsSignUp = require("../middlewares/accountExistsSignUp");
 const accountExistsSignIn = require("../middlewares/accountExistsSignIn");
@@ -35,5 +37,6 @@ router.put(
   passport.authenticate("jwt", { session: false }),
   unlogin
 );
-
+router.get("/me/:id", readUserData);
+router.patch("/me/:id", updateUserData);
 module.exports = router;
