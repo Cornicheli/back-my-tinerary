@@ -122,6 +122,44 @@ const controlador = {
     }
   },
 
+  readUserData: async (req, res, next) => {
+    let { id } = req.params
+    try {
+      let userid = await User.findById(id)
+      if(userid){
+      res.status(200).json({
+        response: userid,
+        success: true,
+        message: 'user data founded'
+      })}
+      else{
+        res.status(404).json({
+        success: false,
+        message: 'user not found'
+      })}
+    } catch (err) {
+      next(err)
+    }
+  },
+  updateUserData: async (req, res, next) => {
+    let { id } = req.params
+    try {
+      let user = await User.findOneAndUpdate({ _id: id }, req.body, { new: true })
+      user ?
+        res.status(200).json({
+          response: user,
+          success: true,
+          message: 'Your profile was update succesfully.'
+        }) :
+        res.status(404).json({
+          success: false,
+          message: 'Profile not found.'
+        })
+    } catch (err) {
+      next(err)
+    }
+  },
+
 };
 
 module.exports = controlador;
