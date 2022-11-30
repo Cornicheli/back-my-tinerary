@@ -102,6 +102,7 @@ const controlador = {
             photo: user.photo,
             role: user.role,
             logged: user.logged,
+            id: user.id
           },
         },
         success: true,
