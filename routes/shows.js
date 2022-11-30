@@ -1,7 +1,9 @@
 let router= require("express").Router()
 let schema = require ('../schemas/shows')
 const validator = require('../middlewares/validator')
-let {create, update, destroy, getallbyshow}= require("../controllers/show")
+const passport = require("../config/passport");
+let {create, update, destroy, getallbyshow, readComments}= require("../controllers/show");
+const { session } = require("../config/passport");
 
 router.post("/",create)
 router.patch("/:id",update)
