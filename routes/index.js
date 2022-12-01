@@ -11,6 +11,6 @@ router.use("/api/hotels", hotels);
 router.use("/api/shows", shows);
 router.use("/api/myhotels", myHotels);
 router.use("/api/myshows", myShows);
-router.use("/api/comment", comment)
+router.use("/api/comments", comment)
 
 module.exports = router;
