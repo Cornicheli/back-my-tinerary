@@ -47,6 +47,19 @@ function verifyResponse(req,res) {
     })
 }
 
+function notyourComment(req, res) {
+    return res.status(401).json({
+        success: false,
+        message: 'You are not the owner of this event'
+    });
+}
+
+function commentNotFound(req, res) {
+    return res.status(404).json({
+        success: false,
+        message: "Not Found ! ",
+    });
+}
 
 module.exports = {
     userSignedUpResponse,
@@ -55,5 +68,7 @@ module.exports = {
     userSignedOutResponse,
     mustSignInResponse,
     invalidCredentialsResponse,
-    verifyResponse
+    verifyResponse,
+    notyourComment,
+    commentNotFound,
 }
