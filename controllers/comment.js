@@ -3,6 +3,8 @@ const Comments = require('../models/Comment')
 const controller = {
     create: async (req,res) => {
         let {user} = req;
+        console.log(user)
+        console.log(req.body)
         try{
             let new_comment = await Comments.create({
                 showId: req.body.showId,
@@ -56,8 +58,9 @@ const controller = {
     update:async (req, res) => {
         let { id } = req.params;
         let { user } = req
+        console.log(req)
         try {
-            let comment = await Comment.findOneAndUpdate({ _id: id }, {
+            let comment = await Comments.findOneAndUpdate({ _id: id }, {
             comment: req.body.comment,
             showId: req.body.showId,
             date: req.body.date,
@@ -78,6 +81,7 @@ const controller = {
             });
         }
         } catch (error) {
+            console.log(error, '<!!!')
         res.status(400).json({
             success: false,
             message: error.message,
@@ -87,7 +91,7 @@ const controller = {
     destroy:async (req, res) => {
         let { id } = req.params;
         try {
-            let oneComment = await Comment.findOneAndDelete({ _id: id});
+            let oneComment = await Comments.findOneAndDelete({ _id: id});
             if (oneComment) {
             res.status(200).json({
                 success: true,
