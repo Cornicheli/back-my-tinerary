@@ -1,6 +1,8 @@
 const joi = require("joi");
 
 const schema = joi.object({
+    name: joi.any(),
+    photo: joi.any(),
     showId: joi.any(),
     userId: joi.any(),
     date: joi.date().required().messages({
