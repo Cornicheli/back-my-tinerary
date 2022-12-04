@@ -1,7 +1,7 @@
 const Hotel = require('../models/Hotel')
 
 const controller = {
-    readHU: async(req,res)=>{
+    read: async(req,res)=>{
         let query = {};
         if(req.query.userId){
             query = {userId: req.query.userId};

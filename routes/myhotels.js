@@ -1,7 +1,7 @@
 let router = require('express').Router()
 
-let { readHU } = require('../controllers/myHotels')
+let { read } = require('../controllers/myHotels')
 
-router.get('/', readHU)
+router.get('/', read)
 
 module.exports = router
