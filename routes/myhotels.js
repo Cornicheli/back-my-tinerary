@@ -1,6 +1,6 @@
-let router = require('express').Router()
+let router = require('express').Router();
 
-let { read } = require('../controllers/myHotels')
+let { read } = require('../controllers/myHotels');
 
 router.get('/', read)
 
